@@ -7,7 +7,7 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
 
 const Navigation = () => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(window.innerWidth > 750 ? true : false);
 
   const handleDrawerToggle = () => {
     setOpen(!open);

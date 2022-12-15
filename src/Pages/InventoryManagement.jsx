@@ -27,7 +27,7 @@ const InventoryManagement = () => {
     <>
       <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={1} spacing={2} sx={{ mb: 2 }}>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<Poll />}
               color="success"
@@ -37,10 +37,10 @@ const InventoryManagement = () => {
               trend="positive"
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <StatisticsCard />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="primary"
@@ -50,7 +50,7 @@ const InventoryManagement = () => {
               // trend="positive"
             />
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="warning"
@@ -66,12 +66,12 @@ const InventoryManagement = () => {
       <FilterGroups />
       <Box sx={{ width: "100%"  }}>
         <Grid container spacing={2} sx={{mb: 2}}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Paper sx={{ width: "100%", p: 1 }}>
               <CustomWorldMap />
             </Paper>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <CustomTable />
           </Grid>
         </Grid>
@@ -98,12 +98,12 @@ const InventoryManagement = () => {
                     INVENTORY AT RISK - 1500
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <Typography variant="h6" sx={{ textAlign: "center", p: 5 }}>
                     NUMBER OF INVENTORY ITEMS AT RISK BY:
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -112,7 +112,7 @@ const InventoryManagement = () => {
                     PRODUCT WISE
                   </Typography>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}

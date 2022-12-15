@@ -16,12 +16,15 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
+
 function App() {
+const boxWwidthCtrl = window.innerWidth > 750 ? `${drawerWidth}px` : '0px'
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <Navigation />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: `calc(100vw - ${drawerWidth}px)`, overflowX: 'hidden' }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: `calc(100vw - ${boxWwidthCtrl})`, overflowX: 'hidden' }}>
           <DrawerHeader />
           <Routes>
             <Route exact path="/" element={<InventoryManagement />} />

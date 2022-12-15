@@ -17,6 +17,7 @@ import {
 import { drawerWidth } from "../../index";
 import ProfilePopup from "./ProfilePopup";
 import NotificationPopup from "./NotificationPopup";
+import theme from "../../theme";
 // import ThemeSwitch from "./ThemeSwitch";
 
 const AppBar = styled(MuiAppBar, {
@@ -54,7 +55,10 @@ const Topbar = ({ toggleDrawer, menuState }) => {
             onClick={handleDrawerOpen}
             edge="start"
             sx={{
-              marginRight: 5,
+              mr: 5,
+              [theme.breakpoints.down('md')] : {
+                mr: 2
+              },
               ...(menuState && { display: "none" }),
             }}
           >
@@ -75,6 +79,9 @@ const Topbar = ({ toggleDrawer, menuState }) => {
                 alignItems: "center",
                 borderRadius: 0,
                 //   bgcolor: "transparent",
+                [theme.breakpoints.down('md')] : {
+                  display: 'none'
+                }
               }}
               elevation={1}
             >
