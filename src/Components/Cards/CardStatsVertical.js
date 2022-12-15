@@ -20,7 +20,7 @@ const CardStatsVertical = (props) => {
     stats,
     trend,
     trendNumber,
-    cardHeight = "214px",
+    cardHeight = "150px",
   } = props;
 
   return (
@@ -29,8 +29,8 @@ const CardStatsVertical = (props) => {
         <Box
           sx={{
             display: "flex",
-            marginBottom: 5.5,
-            alignItems: "stretch",
+            marginBottom: 3,
+            alignItems: "flex-start",
             justifyContent: "space-between",
           }}
         >
@@ -61,16 +61,16 @@ const CardStatsVertical = (props) => {
         </Typography>
         <Box
           sx={{
-            marginTop: 1.5,
+            marginTop: 1,
             display: "flex",
             flexWrap: "wrap",
-            marginBottom: 1.5,
+            marginBottom: 1,
             alignItems: "flex-start",
           }}
         >
           <Typography
             variant="h4"
-            sx={{ fontWeight: 600, fontSize: "2.125rem !important" }}
+            sx={{ fontWeight: 600, fontSize: "1.125rem !important" }}
           >
             {stats}
           </Typography>

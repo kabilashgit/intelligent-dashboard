@@ -26,7 +26,7 @@ const InventoryManagement = () => {
   return (
     <>
       <Box sx={{ width: "100%" }}>
-        <Grid container rowSpacing={1} spacing={2} sx={{ mb: 2 }}>
+        <Grid container rowSpacing={1} spacing={2} sx={{ mb: 1 }}>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<Poll />}
@@ -62,10 +62,10 @@ const InventoryManagement = () => {
           </Grid>
         </Grid>
       </Box>
-      <Divider sx={{ mb: 2 }} />
+      <Divider sx={{ mb: 1 }} />
       <FilterGroups />
       <Box sx={{ width: "100%"  }}>
-        <Grid container spacing={2} sx={{mb: 2}}>
+        <Grid container spacing={2} sx={{mb: 1}}>
           <Grid item xs={12} md={6}>
             <Paper sx={{ width: "100%", p: 1 }}>
               <CustomWorldMap />
@@ -75,8 +75,8 @@ const InventoryManagement = () => {
             <CustomTable />
           </Grid>
         </Grid>
-        <Divider sx={{ mb: 2 }} />
-        <Grid container rowSpacing={1} spacing={2} sx={{ mb: 2 }}>
+        <Divider sx={{ mb: 1 }} />
+        <Grid container rowSpacing={1} spacing={2}>
           <Grid item xs={12}>
             <Paper sx={{ p: 1 }}>
               <Grid
@@ -88,19 +88,20 @@ const InventoryManagement = () => {
               >
                 <Grid item xs={12} sx={{ height: "100%" }}>
                   <Typography
-                    variant="h5"
+                    variant="h6"
                     sx={{
                       fontWeight: 600,
-                      fontSize: "2.125rem !important",
+                      fontSize: "1.125rem !important",
                       textAlign: "center",
+                      color: 'primary.main'
                     }}
                   >
                     INVENTORY AT RISK - 1500
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                  <Typography variant="h6" sx={{ textAlign: "center", p: 5 }}>
-                    NUMBER OF INVENTORY ITEMS AT RISK BY:
+                  <Typography variant="h6" sx={{ textAlign: "center", p: 1, fontSize: '1rem !important' }}>
+                    NUMBER OF INVENTORY<br/>ITEMS AT RISK BY:
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>

@@ -70,6 +70,7 @@ export default function DropDownBtn({ title, variant = "outlined" }) {
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
         color={'primary'}
+        size="small"
       >
         {title}
       </Button>
@@ -82,7 +83,7 @@ export default function DropDownBtn({ title, variant = "outlined" }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem onClick={handleClose} disableRipple sx={{p:1}}>
           ALL
         </MenuItem>
       </StyledMenu>

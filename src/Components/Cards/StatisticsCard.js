@@ -60,9 +60,16 @@ const renderStats = () => {
   ));
 };
 
-const StatisticsCard = ({ cardHeight = "214px" }) => {
+const StatisticsCard = ({ cardHeight = "150px" }) => {
   return (
-    <Card sx={{ minHeight: cardHeight, display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+    <Card
+      sx={{
+        minHeight: cardHeight,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+      }}
+    >
       <CardHeader
         title="SUPPLIER PERFROMANCE"
         action={
@@ -75,20 +82,23 @@ const StatisticsCard = ({ cardHeight = "214px" }) => {
             <DotsVertical />
           </IconButton>
         }
-        subheader={
-          <Typography variant="body2">
-            <Box
-              component="span"
-              sx={{ fontWeight: 600, color: "text.primary" }}
-            >
-              Total 48.5% growth 😎 this month
-            </Box>
-          </Typography>
-        }
+        // subheader={
+        //   <Typography variant="body2">
+        //     <Box
+        //       component="span"
+        //       sx={{ fontWeight: 600, color: "text.primary" }}
+        //     >
+        //       Total 48.5% growth 😎 this month
+        //     </Box>
+        //   </Typography>
+        // }
         titleTypographyProps={{
+          variant: 'p',
           sx: {
-            mb: 1,
-            lineHeight: "2rem !important",
+            mb: 0,
+            fontSize: '1rem',
+            fontWeight: 600,
+            lineHeight: "1.3rem !important",
             letterSpacing: "0.15px !important",
           },
         }}
@@ -99,7 +109,7 @@ const StatisticsCard = ({ cardHeight = "214px" }) => {
           pb: "0 !important",
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={[0, 1]}>
           {renderStats()}
         </Grid>
       </CardContent>

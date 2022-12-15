@@ -5,7 +5,7 @@ import {
   Cell,
   ResponsiveContainer,
   Tooltip,
-  Legend,
+  // Legend,
 } from "recharts";
 import { randomGen } from "../HelperUtils";
 
@@ -68,16 +68,16 @@ export const SimplePieChart = ({ colors, linkTo }) => {
 
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%" minHeight={"400px"} maxHeight={"400px"}>
-        <PieChart width={400} height={400}>
+      <ResponsiveContainer width="100%" height="100%" minHeight={"200px"} maxHeight={"200px"}>
+        <PieChart width={200} height={200}>
           <Pie
             data={dataSet}
             cx="50%"
             cy="50%"
             labelLine={true}
-            innerRadius={60}
+            innerRadius={10}
             label={renderCustomizedLabel}
-            outerRadius={100}
+            outerRadius={50}
             fill="#8884d8"
             dataKey="value"
           >
@@ -88,7 +88,7 @@ export const SimplePieChart = ({ colors, linkTo }) => {
               />
             ))}
           </Pie>
-          <Legend verticalAlign="bottom" align="center" />
+          {/* <Legend verticalAlign="bottom" align="center" /> */}
 
           <Tooltip formatter={(value) => value + "%"} />
         </PieChart>

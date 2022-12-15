@@ -9,32 +9,32 @@ const FilterGroups = () => {
         <Grid
           container
           rowSpacing={1}
-          spacing={2}
-          sx={{ mb: 2 }}
+          spacing={1}
+          sx={{ mb: 1 }}
           justifyContent="space-between"
         >
           <Grid item>
-            <Button variant={"outlined"} disableElevation>
+            <Button variant={"outlined"} size="small" disableElevation>
               Dimensions
             </Button>
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Location"} />
+            <DropDownBtn title={"Location"}  />
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Factory Id"} />
+            <DropDownBtn title={"Factory Id"}  />
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Material Id"} />
+            <DropDownBtn title={"Material Id"}  />
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Cost"} />
+            <DropDownBtn title={"Cost"}  />
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Department"} />
+            <DropDownBtn title={"Department"}  />
           </Grid>
           <Grid item>
-            <DropDownBtn title={"Type of Inventory"} />
+            <DropDownBtn title={"Type of Inventory"}  />
           </Grid>
         </Grid>
       </Box>

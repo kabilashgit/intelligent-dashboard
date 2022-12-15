@@ -6,7 +6,7 @@ import InventoryManagement from "./Pages/InventoryManagement";
 import OrderManagement from "./Pages/OrderManagement";
 import SkuManagenent from "./Pages/SkuManagenent";
 import AssetManagement from "./Pages/AssetManagement";
-import { drawerWidth } from ".";
+// import { drawerWidth } from ".";
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -18,13 +18,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 
 function App() {
-const boxWwidthCtrl = window.innerWidth > 750 ? `${drawerWidth}px` : '0px'
+// const boxWwidthCtrl = window.innerWidth > 750 ? `${drawerWidth}px` : '0px'
+// maxWidth: `calc(100vw - ${boxWwidthCtrl})`,
 
   return (
     <>
       <Box sx={{ display: "flex" }}>
         <Navigation />
-        <Box component="main" sx={{ flexGrow: 1, p: 3, maxWidth: `calc(100vw - ${boxWwidthCtrl})`, overflowX: 'hidden' }}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3,  overflowX: 'hidden' }}>
           <DrawerHeader />
           <Routes>
             <Route exact path="/" element={<InventoryManagement />} />
