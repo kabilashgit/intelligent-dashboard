@@ -69,8 +69,7 @@ const CustomWorldMap = () => {
         backgroundColor="transparent"
         style={{
           width: "100%",
-          height: "280px",
-          minHeight: '280px'
+          height: "30vh",
         }}
         regionStyle={{
           initial: {

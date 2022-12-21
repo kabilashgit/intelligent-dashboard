@@ -31,27 +31,27 @@ const salesData = [
 
 const renderStats = () => {
   return salesData.map((item, index) => (
-    <Grid item xs={4} key={index}>
+    <Grid item xs={4} key={index} sx={{pt: '0 !important'}}>
       <Box
         key={index}
-        sx={{ display: "flex", alignItems: "center", flexDirection: "column" }}
+        sx={{ display: "flex", alignItems: "center", flexDirection: "column", pt: '0 !important' }}
       >
         <Avatar
           variant="rounded"
           sx={{
-            width: 30,
-            height: 30,
+            width: 20,
+            height: 20,
             boxShadow: 3,
             color: "common.white",
             backgroundColor: `${item.color}.main`,
-            fontSize: "1rem",
+            fontSize: ".5rem",
           }}
         >
           {item.stats}
         </Avatar>
         <Typography
           component="span"
-          sx={{ fontWeight: 500, color: `${item.color}.main` }}
+          sx={{ fontWeight: 500, color: `${item.color}.main`, fontSize: '.7rem' }}
         >
           {item.title}
         </Typography>
@@ -60,7 +60,7 @@ const renderStats = () => {
   ));
 };
 
-const StatisticsCard = ({ cardHeight = "150px" }) => {
+const StatisticsCard = ({ cardHeight = "15vh" }) => {
   return (
     <Card
       sx={{
@@ -72,12 +72,13 @@ const StatisticsCard = ({ cardHeight = "150px" }) => {
     >
       <CardHeader
         title="SUPPLIER PERFROMANCE"
+        sx={{p: '10px'}}
         action={
           <IconButton
             size="small"
             aria-label="settings"
             className="card-more-options"
-            sx={{ color: "text.secondary" }}
+            sx={{ color: "text.secondary"}}
           >
             <DotsVertical />
           </IconButton>
@@ -96,9 +97,9 @@ const StatisticsCard = ({ cardHeight = "150px" }) => {
           variant: 'p',
           sx: {
             mb: 0,
-            fontSize: '1rem',
+            fontSize: '.8rem',
             fontWeight: 600,
-            lineHeight: "1.3rem !important",
+            lineHeight: "1rem !important",
             letterSpacing: "0.15px !important",
           },
         }}

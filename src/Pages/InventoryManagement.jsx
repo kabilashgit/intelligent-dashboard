@@ -76,31 +76,29 @@ const InventoryManagement = () => {
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
-        <Grid container rowSpacing={1} spacing={2}>
-          <Grid item xs={12}>
+        <Grid container rowSpacing={1} spacing={2} sx={{minHeight: '20vh', mb: '0 !important'}}>
+          <Grid item xs={12} sx={{mb: '0 !important'}}>
             <Paper sx={{ p: 1 }}>
               <Grid
                 container
                 rowSpacing={1}
                 spacing={[0, 4]}
-                sx={{ mb: 2 }}
+                sx={{ mb: 0 }}
                 alignItems={"center"}
               >
-                <Grid item xs={12} sx={{ height: "100%" }}>
-                  <Typography
+                <Grid item xs={12} md={4}>
+                <Typography
                     variant="h6"
                     sx={{
                       fontWeight: 600,
-                      fontSize: "1.125rem !important",
+                      fontSize: "1rem !important",
                       textAlign: "center",
                       color: 'primary.main'
                     }}
                   >
                     INVENTORY AT RISK - 1500
                   </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                  <Typography variant="h6" sx={{ textAlign: "center", p: 1, fontSize: '1rem !important' }}>
+                  <Typography variant="h6" sx={{ textAlign: "center", p: 1, fontSize: '.8rem !important' }}>
                     NUMBER OF INVENTORY<br/>ITEMS AT RISK BY:
                   </Typography>
                 </Grid>
@@ -108,7 +106,7 @@ const InventoryManagement = () => {
                   <SimplePieChart />
                   <Typography
                     component={"div"}
-                    sx={{ fontWeight: 600, textAlign: "center" }}
+                    sx={{ fontWeight: 600, textAlign: "center", pt: '5px', fontSize: '.8rem' }}
                   >
                     PRODUCT WISE
                   </Typography>
@@ -117,7 +115,7 @@ const InventoryManagement = () => {
                   <SimplePieChart />
                   <Typography
                     component={"div"}
-                    sx={{ fontWeight: 600, textAlign: "center" }}
+                    sx={{ fontWeight: 600, textAlign: "center", pt: '5px', fontSize: '.8rem' }}
                   >
                     INVENTORY TYPE WISE
                   </Typography>

@@ -26,7 +26,7 @@ const columns = [
   {
     id: "materialId",
     label: "Material Id",
-    // minWidth: 100,
+    minWidth: 100,
     align: "center",
   },
   {
@@ -96,7 +96,7 @@ const columns = [
   {
     id: "RiskReason",
     label: "Risk Reason",
-    minWidth: 100,
+    minWidth: 140,
     align: "center",
   },
 ];
@@ -209,7 +209,7 @@ export default function CustomTable() {
 
   return (
     <Paper sx={{ maxWidth: "100%", overflow: "hidden", p: 1 }}>
-      <TableContainer sx={{ maxHeight: 280}}>
+      <TableContainer sx={{ height: '30vh'}}>
         <Table stickyHeader aria-label="sticky table" size="small">
           <TableHead>
             <TableRow>
@@ -217,7 +217,7 @@ export default function CustomTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth, padding: '0 10px' }}
+                  style={{ minWidth: column.minWidth, padding: '0 5px', fontSize: '.8rem' }}
                 >
                   {column.label}
                 </TableCell>
@@ -233,7 +233,7 @@ export default function CustomTable() {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={column.id} align={column.align} style={{fontSize: '.8rem'}}>
                           {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}

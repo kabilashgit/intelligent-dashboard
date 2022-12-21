@@ -2,12 +2,10 @@
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 
 // ** Icons Imports
-import DotsVertical from "mdi-material-ui/DotsVertical";
 import { MenuUp } from "mdi-material-ui";
 
 const CardStatsVertical = (props) => {
@@ -20,7 +18,7 @@ const CardStatsVertical = (props) => {
     stats,
     trend,
     trendNumber,
-    cardHeight = "150px",
+    cardHeight = "15vh",
   } = props;
 
   return (
@@ -44,61 +42,65 @@ const CardStatsVertical = (props) => {
           >
             {icon}
           </Avatar>
-          <IconButton
-            size="small"
-            aria-label="settings"
-            className="card-more-options"
-            sx={{ color: "text.secondary" }}
+          
+          <Box
+            sx={{
+              marginTop: 1,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "flex-start",
+              flexDirection: "column",
+              mt: 0
+            }}
           >
-            <DotsVertical />
-          </IconButton>
-        </Box>
-        <Typography
-          component="span"
-          sx={{ fontWeight: 600, color: "text.primary" }}
-        >
-          {title}
-        </Typography>
-        <Box
-          sx={{
-            marginTop: 1,
-            display: "flex",
-            flexWrap: "wrap",
-            marginBottom: 1,
-            alignItems: "flex-start",
-          }}
-        >
-          <Typography
-            variant="h4"
-            sx={{ fontWeight: 600, fontSize: "1.125rem !important" }}
-          >
-            {stats}
-          </Typography>
-
-          <Box sx={{ mb: 1.5, display: "flex", alignItems: "center" }}>
             <Typography
-              variant="h4"
-              sx={{ fontWeight: 600, fontSize: "2.125rem !important" }}
-            >
-              {subtitle}
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                color: trend && trend === "positive" ? "success.main" : "error.main",
-              }}
-            >
-              {trend ? <MenuUp sx={{ fontSize: "1.875rem", verticalAlign: "middle" }} /> : null}
-              <Typography
-                variant="body2"
+            component="span"
+            sx={{ fontWeight: 600, color: "text.primary", fontSize: '.8rem !important' }}
+          >
+            {title}
+          </Typography>
+            
+              
+            <Box sx={{ mb: 1.5, display: "flex", alignItems: "center" }}>
+              
+              
+                <Typography
+                variant="h4"
+                sx={{ fontWeight: 600, fontSize: ".9rem !important" }}
+              >
+                {stats}
+              </Typography>
+              <Box
                 sx={{
-                  fontWeight: 600,
-                  color: trend === "positive" ? "success.main" : "error.main",
+                  display: "flex",
+                  alignItems: "center",
+                  color:
+                    trend && trend === "positive"
+                      ? "success.main"
+                      : "error.main",
                 }}
               >
-                {trendNumber}
+                <Typography
+                variant="h4"
+                sx={{ fontWeight: 600, fontSize: ".7rem !important" }}
+              >
+                {subtitle}
               </Typography>
+                {trend ? (
+                  <MenuUp
+                    sx={{ fontSize: "1.875rem", verticalAlign: "middle" }}
+                  />
+                ) : null}
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: 600,
+                    color: trend === "positive" ? "success.main" : "error.main",
+                  }}
+                >
+                  {trendNumber}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>

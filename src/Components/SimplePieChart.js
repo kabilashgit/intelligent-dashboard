@@ -68,16 +68,16 @@ export const SimplePieChart = ({ colors, linkTo }) => {
 
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%" minHeight={"200px"} maxHeight={"200px"}>
-        <PieChart width={200} height={200}>
+      <ResponsiveContainer width="100%" height="100%" minHeight={"17vh"} maxHeight={"100px"}>
+        <PieChart width={100} height={100}>
           <Pie
             data={dataSet}
             cx="50%"
             cy="50%"
             labelLine={true}
-            innerRadius={10}
+            innerRadius={5}
             label={renderCustomizedLabel}
-            outerRadius={50}
+            outerRadius={30}
             fill="#8884d8"
             dataKey="value"
           >
