@@ -28,56 +28,31 @@ export const SimplePieChart = ({ colors, linkTo }) => {
     "#b33dc6",
   ];
 
-  const renderCustomizedLabel = ({
-    cx,
-    cy,
-    midAngle,
-    innerRadius,
-    outerRadius,
-    percent,
-    index,
-  }) => {
-    const RADIAN = Math.PI / 180;
-    const radius = 25 + innerRadius + (outerRadius - innerRadius);
-    // Use below Place the percetage Inside in the cell
-    // const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
     const x = cx + radius * Math.cos(-midAngle * RADIAN);
     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
+  
     return (
-      // <text
-      //   x={x}
-      //   y={y}
-      //   fill="white"
-      //   textAnchor={x > cx ? "start" : "end"}
-      //   dominantBaseline="central"
-      // >
-      //   {(percent * 100).toFixed(0)}%{" "}
-      // </text> &&
-      <text
-        x={x}
-        y={y}
-        textAnchor={x > cx ? "start" : "end"}
-        dominantBaseline="central"
-        fill={_COLORS_[index]}
-      >
-        {/* {dataSet[index].name} */} ({(percent * 100).toFixed(0)}%)
+      <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+        {`${(percent * 100).toFixed(0)}%`}
       </text>
     );
   };
 
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%" minHeight={"17vh"} maxHeight={"100px"}>
+      <ResponsiveContainer width="100%" height="100%" minHeight={"20vh"} maxHeight={"100px"}>
         <PieChart width={100} height={100}>
           <Pie
             data={dataSet}
             cx="50%"
             cy="50%"
-            labelLine={true}
+            labelLine={false}
             innerRadius={5}
             label={renderCustomizedLabel}
-            outerRadius={30}
+            outerRadius={75}
             fill="#8884d8"
             dataKey="value"
           >
