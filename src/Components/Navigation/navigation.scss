@@ -1,0 +1,15 @@
+.navmenu {
+  &.active {
+    background-color: #ebbf53;
+    .MuiListItemIcon-root {
+      color: white;
+    }
+    .MuiTypography-body1 {
+      color: white;
+    }
+    &:hover {
+      background-color: #a17a1c;
+      color: white;
+    }
+  }
+}

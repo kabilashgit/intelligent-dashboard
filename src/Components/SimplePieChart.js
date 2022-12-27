@@ -52,7 +52,7 @@ export const SimplePieChart = ({ colors, linkTo }) => {
             labelLine={false}
             innerRadius={5}
             label={renderCustomizedLabel}
-            outerRadius={75}
+            outerRadius={65}
             fill="#8884d8"
             dataKey="value"
           >

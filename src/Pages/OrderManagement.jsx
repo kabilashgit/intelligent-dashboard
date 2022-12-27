@@ -1,39 +1,224 @@
-import { Typography } from '@mui/material'
-import React from 'react'
+import * as React from "react";
+// import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import CurrencyUsd from "mdi-material-ui/CurrencyUsd";
+import CardStatsVertical from "../Components/Cards/CardStatsVertical";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+import FilterGroups from "../Components/FilterGroups";
+import CustomWorldMap from "../Components/CustomWorldMap";
+import CustomTable from "../Components/CustomTable";
+import Typography from "@mui/material/Typography";
+import { SimplePieChart } from "../Components/SimplePieChart";
+import { randomGen } from "../HelperUtils";
+
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   color: theme.palette.text.secondary,
+// }));
 
 const OrderManagement = () => {
-  return (
-    <div>
-      <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-        tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
-        tellus. Convallis convallis tellus id interdum velit laoreet id donec
-        ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
-        suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
-        quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
-        proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
-        tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
-        varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-        Lorem donec massa sapien faucibus et molestie ac.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-        aliquam ultrices sagittis orci a.
-      </Typography>
-    </div>
-  )
-}
+  const [age, setAge] = React.useState("");
 
-export default OrderManagement
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
+  const dropDownData = [
+    {
+      title: "Dimensions",
+    },
+    {
+      title: "Location",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Factory Id",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Mo No.",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "PO No.",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Supplier",
+      dropdown: ["All", "one", "two"],
+    },
+  ];
+  return (
+    <>
+      <Box sx={{ width: "100%" }}>
+        <Grid container rowSpacing={1} sx={{ mb: 1 }}>
+          <FilterGroups dropDownData={dropDownData} />
+        </Grid>
+        <Divider sx={{ mb: 1 }} />
+        <Grid container rowSpacing={1} spacing={2} sx={{ mb: 1 }}>
+          <Grid item xs={12} md={3}>
+            <CardStatsVertical
+              color="success"
+              title="MO's"
+              stats="4000"
+              // trendNumber="4.1%"
+              // trend="positive"
+            />
+          </Grid>
+          <Grid item xs={12} md={3}>
+          <CardStatsVertical
+              color="success"
+              title="PERCENTAGE ORDERS"
+              stats="<80% of Fill rate"
+              // trendNumber="4.1%"
+              // trend="positive"
+            />
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <CardStatsVertical
+              icon={<CurrencyUsd />}
+              color="primary"
+              title="ORDERS AT RISK OF EXCEEDING"
+              stats="500 K $ (500)"
+              // trendNumber="10%"
+              // trend="positive"
+            />
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <CardStatsVertical
+              icon={<CurrencyUsd />}
+              color="warning"
+              title="ORDERS AT RISK OF COMPLETION"
+              stats="500"
+              // trendNumber="10%"
+              // trend="positive"
+            />
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ width: "100%" }}>
+        <Grid container spacing={2} sx={{ mb: 1 }}>
+          <Grid item xs={12} md={6}>
+            <Paper sx={{ width: "100%", p: 1 }}>
+              <CustomWorldMap />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <CustomTable />
+          </Grid>
+        </Grid>
+        <Divider sx={{ mb: 1 }} />
+        <Grid
+          container
+          rowSpacing={1}
+          spacing={2}
+          sx={{ minHeight: "20vh", mb: "0 !important" }}
+        >
+          <Grid item xs={12} sx={{ mb: "0 !important" }}>
+            <Paper sx={{ p: 1 }}>
+              <Grid
+                container
+                rowSpacing={1}
+                spacing={[0, 4]}
+                sx={{ mb: 0 }}
+                alignItems={"center"}
+              >
+                <Grid item xs={12} md={6}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 600,
+                      fontSize: "1rem !important",
+                      textAlign: "left",
+                      color: "primary.main",
+                      ml:1
+                    }}
+                  >
+                    ORDERS AT RISK
+                  </Typography>
+                  <FormControl
+                    sx={{ m: 1, width: "100%", maxWidth: 300, mt: 3 }}
+                    size="small"
+                  >
+                    <InputLabel id="demo-select-small">
+                      Orders by
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small"
+                      id="demo-select-small"
+                      value={age}
+                      label="Inventery Type"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={10}>Stage Wise</MenuItem>
+                      <MenuItem value={20}>Cycle Time</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      textAlign: "left",
+                      p: 1,
+                      fontSize: ".9rem !important",
+                    }}
+                  >
+                    NUMBER OF ORDERS BY - {" "}
+                    <Typography
+                      component={"span"}
+                      sx={(theme) => ({
+                        fontWeight: 600,
+                        color: theme.palette.primary.dark,
+                      })}
+                    >
+                      {randomGen(1000, 2000)}
+                    </Typography>
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <SimplePieChart />
+                  <Typography
+                    component={"div"}
+                    sx={{
+                      fontWeight: 600,
+                      textAlign: "center",
+                      pt: "5px",
+                      fontSize: ".8rem",
+                    }}
+                  >
+                    STAGE WISE
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={3}>
+                  <SimplePieChart />
+                  <Typography
+                    component={"div"}
+                    sx={{
+                      fontWeight: 600,
+                      textAlign: "center",
+                      pt: "5px",
+                      fontSize: ".8rem",
+                    }}
+                  >
+                    CYCLE TIME
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </>
+  );
+};
+
+export default OrderManagement;

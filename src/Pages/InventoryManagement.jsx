@@ -7,12 +7,17 @@ import Paper from "@mui/material/Paper";
 import CurrencyUsd from "mdi-material-ui/CurrencyUsd";
 import CardStatsVertical from "../Components/Cards/CardStatsVertical";
 import StatisticsCard from "../Components/Cards/StatisticsCard";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 import FilterGroups from "../Components/FilterGroups";
 import CustomWorldMap from "../Components/CustomWorldMap";
 import CustomTable from "../Components/CustomTable";
 import Typography from "@mui/material/Typography";
 import { SimplePieChart } from "../Components/SimplePieChart";
+import { randomGen } from "../HelperUtils";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -22,15 +27,47 @@ import { SimplePieChart } from "../Components/SimplePieChart";
 // }));
 
 const InventoryManagement = () => {
-  
+  const [age, setAge] = React.useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+  const dropDownData = [
+    {
+      title: "Dimensions",
+    },
+    {
+      title: "Location",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Factory Id",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Material Id",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Cost",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Department",
+      dropdown: ["All", "one", "two"],
+    },
+    {
+      title: "Type of Inventory",
+      dropdown: ["All", "one", "two"],
+    },
+  ];
   return (
     <>
       <Box sx={{ width: "100%" }}>
-      <Grid container rowSpacing={1} sx={{ mb: 1 }}>
-
-      <FilterGroups />
+        <Grid container rowSpacing={1} sx={{ mb: 1 }}>
+          <FilterGroups dropDownData={dropDownData} />
         </Grid>
-      <Divider sx={{ mb: 1 }} />
+        <Divider sx={{ mb: 1 }} />
         <Grid container rowSpacing={1} spacing={2} sx={{ mb: 1 }}>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
@@ -42,7 +79,7 @@ const InventoryManagement = () => {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <StatisticsCard title={'SUPPLIER PERFORMANCE'} />
+            <StatisticsCard title={"SUPPLIER PERFORMANCE"} barData={[81, 22, 5]} />
           </Grid>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
@@ -66,9 +103,9 @@ const InventoryManagement = () => {
           </Grid>
         </Grid>
       </Box>
-      
-      <Box sx={{ width: "100%"  }}>
-        <Grid container spacing={2} sx={{mb: 1}}>
+
+      <Box sx={{ width: "100%" }}>
+        <Grid container spacing={2} sx={{ mb: 1 }}>
           <Grid item xs={12} md={6}>
             <Paper sx={{ width: "100%", p: 1 }}>
               <CustomWorldMap />
@@ -79,8 +116,13 @@ const InventoryManagement = () => {
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
-        <Grid container rowSpacing={1} spacing={2} sx={{minHeight: '20vh', mb: '0 !important'}}>
-          <Grid item xs={12} sx={{mb: '0 !important'}}>
+        <Grid
+          container
+          rowSpacing={1}
+          spacing={2}
+          sx={{ minHeight: "20vh", mb: "0 !important" }}
+        >
+          <Grid item xs={12} sx={{ mb: "0 !important" }}>
             <Paper sx={{ p: 1 }}>
               <Grid
                 container
@@ -89,36 +131,81 @@ const InventoryManagement = () => {
                 sx={{ mb: 0 }}
                 alignItems={"center"}
               >
-                <Grid item xs={12} md={4}>
-                <Typography
+                <Grid item xs={12} md={6}>
+                  <Typography
                     variant="h6"
                     sx={{
                       fontWeight: 600,
                       fontSize: "1rem !important",
-                      textAlign: "center",
-                      color: 'primary.main'
+                      textAlign: "left",
+                      color: "primary.main",
+                      ml:1
                     }}
                   >
-                    INVENTORY AT RISK - 1500
+                    INVENTORY AT RISK
                   </Typography>
-                  <Typography variant="h6" sx={{ textAlign: "center", p: 1, fontSize: '.8rem !important' }}>
-                    NUMBER OF INVENTORY<br/>ITEMS AT RISK BY:
+                  <FormControl
+                    sx={{ m: 1, width: "100%", maxWidth: 300, mt: 3 }}
+                    size="small"
+                  >
+                    <InputLabel id="demo-select-small">
+                      Inventery Type
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small"
+                      id="demo-select-small"
+                      value={age}
+                      label="Inventery Type"
+                      onChange={handleChange}
+                    >
+                      <MenuItem value={10}>Product Wise</MenuItem>
+                      <MenuItem value={20}>Inventory Wise</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      textAlign: "left",
+                      p: 1,
+                      fontSize: ".9rem !important",
+                    }}
+                  >
+                    NUMBER OF INVENTORY - {" "}
+                    <Typography
+                      component={"span"}
+                      sx={(theme) => ({
+                        fontWeight: 600,
+                        color: theme.palette.primary.dark,
+                      })}
+                    >
+                      {randomGen(1000, 2000)}
+                    </Typography>
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
-                    sx={{ fontWeight: 600, textAlign: "center", pt: '5px', fontSize: '.8rem' }}
+                    sx={{
+                      fontWeight: 600,
+                      textAlign: "center",
+                      pt: "5px",
+                      fontSize: ".8rem",
+                    }}
                   >
                     PRODUCT WISE
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
-                    sx={{ fontWeight: 600, textAlign: "center", pt: '5px', fontSize: '.8rem' }}
+                    sx={{
+                      fontWeight: 600,
+                      textAlign: "center",
+                      pt: "5px",
+                      fontSize: ".8rem",
+                    }}
                   >
                     INVENTORY TYPE WISE
                   </Typography>

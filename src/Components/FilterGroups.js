@@ -2,36 +2,8 @@ import React from "react";
 import DropDownBtn from "../Components/DropDownBtn";
 import Button from "@mui/material/Button";
 import { Grid, Box } from "@mui/material";
-const FilterGroups = () => {
-  const dropDownData = [
-    {
-      title: "Dimensions",
-    },
-    {
-      title: "Location",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Factory Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Material Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Cost",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Department",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Type of Inventory",
-      dropdown: ["All", "one", "two"],
-    },
-  ];
+const FilterGroups = ({dropDownData}) => {
+  
   return (
     <>
       <Box sx={{ width: "100%" }}>

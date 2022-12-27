@@ -16,28 +16,12 @@ import {
 } from "@mui/material";
 import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 
-const salesData = [
-  {
-    stats: "81",
-    color: "success",
-    title: "high",
-  },
-  {
-    stats: "22",
-    color: "warning",
-    title: "medium",
-  },
-  {
-    stats: "5",
-    color: "error",
-    title: "Low",
-  },
-];
+
 const ITEM_HEIGHT = 48;
 
 const options = ["Notification 1", "Notification 2", "Notification 3"];
 
-const StatisticsCard = ({ title }) => {
+const StatisticsCard = ({ title, barData }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -56,6 +40,24 @@ const StatisticsCard = ({ title }) => {
       // padding: "0 4px",
     },
   }));
+
+  const salesData = [
+    {
+      stats: barData[0],
+      color: "success",
+      title: "high",
+    },
+    {
+      stats: barData[1],
+      color: "warning",
+      title: "medium",
+    },
+    {
+      stats: barData[2],
+      color: "error",
+      title: "Low",
+    },
+  ];
 
   const renderStats = () => {
     return salesData.map((item, index) => (

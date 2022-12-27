@@ -5,6 +5,7 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
+import AddIcon from '@mui/icons-material/Add';
 
 const Navigation = () => {
   const [open, setOpen] = React.useState(window.innerWidth > 750 ? true : false);
@@ -33,6 +34,26 @@ const Navigation = () => {
       name: "Asset Management",
       link: "intelligent-asset-management",
       icon: <RequestPageIcon />
+    },
+    {
+      name: "Navigation 1",
+      link: "/1",
+      icon: <AddIcon />
+    },
+    {
+      name: "Navigation 2",
+      link: "/2",
+      icon: <AddIcon />
+    },
+    {
+      name: "Navigation 3",
+      link: "/3",
+      icon: <AddIcon />
+    },
+    {
+      name: "Navigation 4",
+      link: "/4",
+      icon: <AddIcon />
     },
   ];
   return (

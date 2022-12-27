@@ -190,6 +190,58 @@ const rows = [
     "At Risk",
     "Delivery Shortage"
   ),
+  createData(
+    1,
+    `PO_${getRandomDate()}`,
+    `DD_SF_${getRandomDate()}`,
+    `MID_${randomGen(100, 200)} ft`,
+    "Wood",
+    6,
+    `VD_${randomGen(10000, 10030)}`,
+    "Lorem",
+    getRandomDate(),
+    "At Risk",
+    "Wealthier"
+  ),
+  createData(
+    2,
+    `PO_${getRandomDate()}`,
+    `DD_SF_${getRandomDate()}`,
+    `MID_${randomGen(100, 200)} ft`,
+    "Wood",
+    6,
+    `VD_${randomGen(10000, 10030)}`,
+    "Lorem",
+    getRandomDate(),
+    "At Risk",
+    "Supply Shortage"
+  ),
+  createData(
+    3,
+    `PO_${getRandomDate()}`,
+    `DD_SF_${getRandomDate()}`,
+    `MID_${randomGen(100, 200)} ft`,
+    "Wood",
+    6,
+    `VD_${randomGen(10000, 10030)}`,
+    "Lorem",
+    getRandomDate(),
+    "At Risk",
+    "Delivery Shortage"
+  ),
+  createData(
+    4,
+    `PO_${getRandomDate()}`,
+    `DD_SF_${getRandomDate()}`,
+    `MID_${randomGen(100, 200)} ft`,
+    "Wood",
+    6,
+    `VD_${randomGen(10000, 10030)}`,
+    "Lorem",
+    getRandomDate(),
+    "At Risk",
+    "Delivery Shortage"
+  ),
 ];
 
 export default function CustomTable() {
