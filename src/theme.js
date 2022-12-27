@@ -15,10 +15,10 @@ const _COLORS_ = {
     white: "#FFF",
   },
   primary: {
-    light: "#9E69FD",
-    main: "#9155FD",
-    dark: "#804BDF",
-    contrastText: "#FFF",
+    light: "#EBBF53",
+    main: "#e7af28",
+    dark: "#A17A1C",
+    contrastText: "rgba(0, 0, 0, 0.87)"
   },
   secondary: {
     light: "#9C9FA4",
@@ -48,6 +48,12 @@ const _COLORS_ = {
     light: "#32BAFF",
     main: "#16B1FF",
     dark: "#139CE0",
+    contrastText: "#FFF",
+  },
+  brandColor: {
+    light: "#9E69FD",
+    main: "#9155FD",
+    dark: "#804BDF",
     contrastText: "#FFF",
   },
   grey: {

@@ -5,7 +5,6 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import CurrencyUsd from "mdi-material-ui/CurrencyUsd";
-import Poll from "mdi-material-ui/Poll";
 import CardStatsVertical from "../Components/Cards/CardStatsVertical";
 import StatisticsCard from "../Components/Cards/StatisticsCard";
 
@@ -23,29 +22,34 @@ import { SimplePieChart } from "../Components/SimplePieChart";
 // }));
 
 const InventoryManagement = () => {
+  
   return (
     <>
       <Box sx={{ width: "100%" }}>
+      <Grid container rowSpacing={1} sx={{ mb: 1 }}>
+
+      <FilterGroups />
+        </Grid>
+      <Divider sx={{ mb: 1 }} />
         <Grid container rowSpacing={1} spacing={2} sx={{ mb: 1 }}>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
-              icon={<Poll />}
               color="success"
-              title="COST OF INVESTMENT"
-              stats="$4000K"
-              trendNumber="10%"
+              title="INVENTORY"
+              stats="$6.1M"
+              trendNumber="4.1%"
               trend="positive"
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <StatisticsCard />
+            <StatisticsCard title={'SUPPLIER PERFORMANCE'} />
           </Grid>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="primary"
-              title="INV. WITH HIGH CARRYING COST"
-              stats="200"
+              title="CARRYING RATE"
+              stats="31%"
               // trendNumber="10%"
               // trend="positive"
             />
@@ -54,7 +58,7 @@ const InventoryManagement = () => {
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="warning"
-              title="INVENTORY TURN OVER"
+              title="INVENTORY TURNOVER"
               stats="45.65%"
               // trendNumber="10%"
               // trend="positive"
@@ -62,8 +66,7 @@ const InventoryManagement = () => {
           </Grid>
         </Grid>
       </Box>
-      <Divider sx={{ mb: 1 }} />
-      <FilterGroups />
+      
       <Box sx={{ width: "100%"  }}>
         <Grid container spacing={2} sx={{mb: 1}}>
           <Grid item xs={12} md={6}>

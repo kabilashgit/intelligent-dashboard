@@ -5,7 +5,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
+import BrandLogo from "../../assets/images/JCB-Logo.jpg";
 // import BritishDesktopLogo from "../../assets/images/ba_masterbrand_positive.svg";
 
 import { drawerWidth } from "../../index";
@@ -68,16 +68,16 @@ const Sidebar = ({ toggleDrawer, menuState, menuItems }) => {
     <div>
       <Drawer variant="permanent" open={menuState}>
         <DrawerHeader
-          sx={{
-            bgcolor: "primary",
-          }}
+          sx={(theme) => ({
+            bgcolor: `${theme.palette.primary.main}`,
+          })}
         >
           {menuState && (
             <img
-              src={"https://place-hold.it/167x27/fff?text=LOGO&fontsize=16"}
+              src={BrandLogo}
               alt={"British Airways"}
               width={167}
-              sx={{ backgroundColor: "white" }}
+              sx={{ backgroundColor: "yellow" }}
             />
           )}
           <IconButton

@@ -48,7 +48,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function DropDownBtn({ title, variant = "outlined" }) {
+export default function DropDownBtn({ title, variant = "outlined", dropDownItems=['All'] }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -83,9 +83,11 @@ export default function DropDownBtn({ title, variant = "outlined" }) {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} disableRipple sx={{p:1}}>
-          ALL
+        {dropDownItems.map((v,i)=> (
+          <MenuItem key={i} onClick={handleClose} disableRipple sx={{p:1}}>
+          {v}
         </MenuItem>
+        ))}
       </StyledMenu>
     </div>
   );

@@ -12,12 +12,14 @@ import {
   InputBase,
   Paper,
   Stack,
+  Tooltip,
 } from "@mui/material";
 
 import { drawerWidth } from "../../index";
 import ProfilePopup from "./ProfilePopup";
 import NotificationPopup from "./NotificationPopup";
 import theme from "../../theme";
+import { DisplaySettings } from "@mui/icons-material";
 // import ThemeSwitch from "./ThemeSwitch";
 
 const AppBar = styled(MuiAppBar, {
@@ -47,7 +49,9 @@ const Topbar = ({ toggleDrawer, menuState }) => {
 
   return (
     <div>
-      <AppBar position="fixed" open={menuState}>
+      <AppBar position="fixed" open={menuState} sx={(theme) => ({
+        bgcolor: theme.palette.primary.main
+      })}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -95,10 +99,18 @@ const Topbar = ({ toggleDrawer, menuState }) => {
               </IconButton>
             </Paper>
             <Typography variant="h6" noWrap component="div">
-            INTELLIGENT DASHBOARD
+            INTELLIGENT INVENTORY MANAGEMENT
             </Typography>
             <Stack direction="row" alignItems="center">
               {/* <ThemeSwitch /> */}
+
+              <IconButton sx={{
+                mr:2
+              }}>
+                <Tooltip title="Change Dashboard View">
+                <DisplaySettings sx={{color: 'white'}} />
+                </Tooltip>
+              </IconButton>
               <NotificationPopup />
               <ProfilePopup />
             </Stack>

@@ -1,40 +1,69 @@
+import * as React from "react";
 // ** MUI Imports
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import Avatar from "@mui/material/Avatar";
-import CardHeader from "@mui/material/CardHeader";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CardContent from "@mui/material/CardContent";
 
 // ** Icons Imports
-import DotsVertical from "mdi-material-ui/DotsVertical";
+import {
+  Avatar,
+  Badge,
+  IconButton,
+  Menu,
+  MenuItem,
+  styled,
+} from "@mui/material";
+import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 
 const salesData = [
   {
-    stats: "60",
+    stats: "81",
     color: "success",
     title: "high",
   },
   {
-    stats: "30",
+    stats: "22",
     color: "warning",
     title: "medium",
   },
   {
-    stats: "10",
+    stats: "5",
     color: "error",
     title: "Low",
   },
 ];
+const ITEM_HEIGHT = 48;
 
-const renderStats = () => {
-  return salesData.map((item, index) => (
-    <Grid item xs={4} key={index} sx={{pt: '0 !important'}}>
+const options = ["Notification 1", "Notification 2", "Notification 3"];
+
+const StatisticsCard = ({ title }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+    "& .MuiBadge-badge": {
+      right: 3,
+      top: 16,
+      border: `1px solid ${theme.palette.background.paper}`,
+      background: `${theme.palette.error.light}`,
+      // padding: "0 4px",
+    },
+  }));
+
+  const renderStats = () => {
+    return salesData.map((item, index) => (
       <Box
         key={index}
-        sx={{ display: "flex", alignItems: "center", flexDirection: "column", pt: '0 !important' }}
+        sx={{
+          mr: index === salesData.length - 1 ? 0 : 2,
+        }}
       >
         <Avatar
           variant="rounded"
@@ -44,75 +73,125 @@ const renderStats = () => {
             boxShadow: 3,
             color: "common.white",
             backgroundColor: `${item.color}.main`,
-            fontSize: ".5rem",
+            fontSize: ".7rem",
+            mx: "auto",
           }}
         >
           {item.stats}
         </Avatar>
         <Typography
           component="span"
-          sx={{ fontWeight: 500, color: `${item.color}.main`, fontSize: '.7rem' }}
+          sx={{
+            fontWeight: 500,
+            color: `${item.color}.main`,
+            fontSize: ".9rem",
+          }}
         >
           {item.title}
         </Typography>
       </Box>
-    </Grid>
-  ));
-};
+    ));
+  };
 
-const StatisticsCard = ({ cardHeight = "15vh" }) => {
   return (
-    <Card
-      sx={{
-        minHeight: cardHeight,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-evenly",
-      }}
-    >
-      <CardHeader
-        title="SUPPLIER PERFROMANCE"
-        sx={{p: '10px'}}
-        action={
-          <IconButton
-            size="small"
-            aria-label="settings"
-            className="card-more-options"
-            sx={{ color: "text.secondary"}}
+    <Card sx={{ height: "100px" }}>
+      <CardContent sx={{ height: "100%" }}>
+        <Box>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+              height: "100%",
+            }}
           >
-            <DotsVertical />
-          </IconButton>
-        }
-        // subheader={
-        //   <Typography variant="body2">
-        //     <Box
-        //       component="span"
-        //       sx={{ fontWeight: 600, color: "text.primary" }}
-        //     >
-        //       Total 48.5% growth 😎 this month
-        //     </Box>
-        //   </Typography>
-        // }
-        titleTypographyProps={{
-          variant: 'p',
-          sx: {
-            mb: 0,
-            fontSize: '.8rem',
-            fontWeight: 600,
-            lineHeight: "1rem !important",
-            letterSpacing: "0.15px !important",
-          },
-        }}
-      />
-      <CardContent
-        sx={{
-          pt: (theme) => `${theme.spacing(0)} !important`,
-          pb: "0 !important",
-        }}
-      >
-        <Grid container spacing={[0, 1]}>
-          {renderStats()}
-        </Grid>
+            <Box
+              sx={{
+                marginTop: 1,
+                flexWrap: "wrap",
+                alignItems: "flex-start",
+                flexDirection: "column",
+                mt: 0,
+                height: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                component="span"
+                sx={{
+                  fontWeight: 600,
+                  color: "text.primary",
+                  fontSize: ".8rem !important",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "1",
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }}
+                title={title}
+              >
+                {title}
+              </Typography>              
+            </Box>
+            <Box>
+              <IconButton
+                aria-label="more"
+                id="long-button"
+                aria-controls={open ? "long-menu" : undefined}
+                aria-expanded={open ? "true" : undefined}
+                aria-haspopup="true"
+                onClick={handleClick}
+                sx={{ m: 0, p: 0 }}
+              >
+                <StyledBadge
+                  // badgeContent={Math.floor(Math.random() * (10 - 1 + 1)) + 1}
+                  variant="dot"
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  color="error"
+                >
+                  <NotificationImportantIcon fontSize={"20px"} />
+                </StyledBadge>
+              </IconButton>
+              <Menu
+                id="long-menu"
+                MenuListProps={{
+                  "aria-labelledby": "long-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: "20ch",
+                  },
+                }}
+              >
+                {options.map((option) => (
+                  <MenuItem
+                    key={option}
+                    selected={option === "Pyxis"}
+                    onClick={handleClose}
+                  >
+                    {option}
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Box>
+          <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  mt: 1,
+                }}
+              >
+                {renderStats()}
+              </Box>
+        </Box>
       </CardContent>
     </Card>
   );
