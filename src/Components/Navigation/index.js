@@ -5,7 +5,10 @@ import InventoryIcon from '@mui/icons-material/Inventory';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import RequestPageIcon from '@mui/icons-material/RequestPage';
-import AddIcon from '@mui/icons-material/Add';
+import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import Person3Icon from '@mui/icons-material/Person3';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import HandymanIcon from '@mui/icons-material/Handyman';
 
 const Navigation = () => {
   const [open, setOpen] = React.useState(window.innerWidth > 750 ? true : false);
@@ -36,24 +39,24 @@ const Navigation = () => {
       icon: <RequestPageIcon />
     },
     {
-      name: "Navigation 1",
+      name: "Supplier/Vendor Management",
       link: "/1",
-      icon: <AddIcon />
+      icon: <AirportShuttleIcon />
     },
     {
-      name: "Navigation 2",
+      name: "Customer Management",
       link: "/2",
-      icon: <AddIcon />
+      icon: <Person3Icon />
     },
     {
-      name: "Navigation 3",
+      name: "Accounts Payable Management & Leakage Monitoring",
       link: "/3",
-      icon: <AddIcon />
+      icon: <AccountBalanceIcon />
     },
     {
-      name: "Navigation 4",
+      name: "Incident Management",
       link: "/4",
-      icon: <AddIcon />
+      icon: <HandymanIcon />
     },
   ];
   return (

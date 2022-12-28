@@ -87,7 +87,6 @@ const SimpleMixedBarChart = ({ chartTitle }) => {
     return <Label {...rest} fontSize="12" fill="#FFFFFF" fontWeight="Bold" />;
   };
   const dataNames = Object.keys(dataSet[0]);
-  console.log(dataNames);
   dataNames.shift();
 
   const dynamicMax = () => {

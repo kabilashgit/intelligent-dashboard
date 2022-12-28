@@ -13,17 +13,10 @@ import NotificationImportantIcon from "@mui/icons-material/NotificationImportant
 
 const CardStatsVertical = (props) => {
   // ** Props
-  const {
-    title,
-    subtitle,
-    stats,
-    trend,
-    trendNumber,
-  } = props;
+  const { title, subtitle, stats, trend, trendNumber, notification, subText } =
+    props;
 
   const ITEM_HEIGHT = 48;
-
-  const options = ["Notification 1", "Notification 2", "Notification 3"];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -45,7 +38,7 @@ const CardStatsVertical = (props) => {
   }));
 
   return (
-    <Card sx={{ height: '100px' }}>
+    <Card sx={{ height: "100px" }}>
       <CardContent sx={{ height: "100%" }}>
         <Box>
           <Box
@@ -82,59 +75,66 @@ const CardStatsVertical = (props) => {
                 {title}
               </Typography>
             </Box>
-            <Box>
-              <IconButton
-                aria-label="more"
-                id="long-button"
-                aria-controls={open ? "long-menu" : undefined}
-                aria-expanded={open ? "true" : undefined}
-                aria-haspopup="true"
-                onClick={handleClick}
-                sx={{ m: 0, p: 0 }}
-              >
-                <StyledBadge
-                  // badgeContent={Math.floor(Math.random() * (10 - 1 + 1)) + 1}
-                  variant="dot"
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  color="error"
+            {notification ? (
+              <Box>
+                <IconButton
+                  aria-label="more"
+                  id="long-button"
+                  aria-controls={open ? "long-menu" : undefined}
+                  aria-expanded={open ? "true" : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                  sx={{ m: 0, p: 0 }}
                 >
-                  <NotificationImportantIcon fontSize={"20px"} />
-                </StyledBadge>
-              </IconButton>
-              <Menu
-                id="long-menu"
-                MenuListProps={{
-                  "aria-labelledby": "long-button",
-                }}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  style: {
-                    maxHeight: ITEM_HEIGHT * 4.5,
-                    width: "20ch",
-                  },
-                }}
-              >
-                {options.map((option) => (
-                  <MenuItem
-                    key={option}
-                    selected={option === "Pyxis"}
-                    onClick={handleClose}
+                  <StyledBadge
+                    // badgeContent={Math.floor(Math.random() * (10 - 1 + 1)) + 1}
+                    variant="dot"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    color="error"
                   >
-                    {option}
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
+                    <NotificationImportantIcon fontSize={"20px"} />
+                  </StyledBadge>
+                </IconButton>
+                <Menu
+                  id="long-menu"
+                  MenuListProps={{
+                    "aria-labelledby": "long-button",
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: ITEM_HEIGHT * 4.5,
+                      width: "40ch",
+                    },
+                  }}
+                >
+                  {notification.map((option) => (
+                    <MenuItem key={option} onClick={handleClose}>
+                      <span
+                        dangerouslySetInnerHTML={{ __html: option }}
+                        style={{ whiteSpace: 'break-spaces', wordBreak: 'break-word' }}
+                      ></span>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            ) : null}
           </Box>
 
           <Box sx={{ mt: 1.5, display: "flex", alignItems: "center" }}>
-            <Typography variant="h4" sx={{ fontWeight: 600, fontSize: '1.5rem !important' }}>
-              {stats}
+            <Typography
+              variant="h4"
+              sx={{ fontWeight: 600, fontSize: "1.6rem !important" }}
+            >
+              {stats}{" "}
+              {subText && subText !== undefined ? (
+                <span style={{ fontSize: ".8rem" }}>{subText}</span>
+              ) : null}
             </Typography>
             <Box
               sx={{

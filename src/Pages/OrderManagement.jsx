@@ -17,6 +17,7 @@ import CustomTable from "../Components/CustomTable";
 import Typography from "@mui/material/Typography";
 import { SimplePieChart } from "../Components/SimplePieChart";
 import { randomGen } from "../HelperUtils";
+import { dropDownData, tableData } from "./orderMgmtData";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -26,37 +27,12 @@ import { randomGen } from "../HelperUtils";
 // }));
 
 const OrderManagement = () => {
-  const [age, setAge] = React.useState("");
+  const [val, setVal] = React.useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setVal(event.target.value);
   };
 
-  const dropDownData = [
-    {
-      title: "Dimensions",
-    },
-    {
-      title: "Location",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Factory Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Mo No.",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "PO No.",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Supplier",
-      dropdown: ["All", "one", "two"],
-    },
-  ];
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -68,17 +44,18 @@ const OrderManagement = () => {
           <Grid item xs={12} md={3}>
             <CardStatsVertical
               color="success"
-              title="MO's"
-              stats="4000"
+              title="TOTAL MOs"
+              stats="3764"
+              subText=" (increase by 4%)"
               // trendNumber="4.1%"
               // trend="positive"
             />
           </Grid>
           <Grid item xs={12} md={3}>
-          <CardStatsVertical
+            <CardStatsVertical
               color="success"
-              title="PERCENTAGE ORDERS"
-              stats="<80% of Fill rate"
+              title="FILL RATE ORDER RISK"
+              stats="20%"
               // trendNumber="4.1%"
               // trend="positive"
             />
@@ -87,8 +64,9 @@ const OrderManagement = () => {
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="primary"
-              title="ORDERS AT RISK OF EXCEEDING"
-              stats="500 K $ (500)"
+              title="CYCLE TIME ORDER RISK"
+              stats="$812K"
+              subText=" (122 Orders)"
               // trendNumber="10%"
               // trend="positive"
             />
@@ -97,8 +75,13 @@ const OrderManagement = () => {
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="warning"
-              title="ORDERS AT RISK OF COMPLETION"
-              stats="500"
+              title="COMPLETION RISK"
+              stats="$751K"
+              subText=" (97 Orders)"
+              notification={[
+                "<strong>Risk: </strong>3 Seater Auto orders at risk due to shaping machine downtime",
+                "<strong>Mitigation: </strong>Address downtime issue, or look for alternative approach to fulfill order",
+              ]}
               // trendNumber="10%"
               // trend="positive"
             />
@@ -114,7 +97,7 @@ const OrderManagement = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <CustomTable />
+            <CustomTable tableData={tableData} />
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
@@ -141,7 +124,7 @@ const OrderManagement = () => {
                       fontSize: "1rem !important",
                       textAlign: "left",
                       color: "primary.main",
-                      ml:1
+                      ml: 1,
                     }}
                   >
                     ORDERS AT RISK
@@ -150,18 +133,25 @@ const OrderManagement = () => {
                     sx={{ m: 1, width: "100%", maxWidth: 300, mt: 3 }}
                     size="small"
                   >
-                    <InputLabel id="demo-select-small">
-                      Orders by
-                    </InputLabel>
+                    <InputLabel id="demo-select-small">Orders by</InputLabel>
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
-                      value={age}
+                      value={val}
                       label="Inventery Type"
                       onChange={handleChange}
+                      selected={"Product category"}
                     >
-                      <MenuItem value={10}>Stage Wise</MenuItem>
-                      <MenuItem value={20}>Cycle Time</MenuItem>
+                      <MenuItem value={"Product category"}>
+                        Product category
+                      </MenuItem>
+                      <MenuItem value={"Inventory category"}>
+                        Inventory category
+                      </MenuItem>
+                      <MenuItem value={"Factory Unit Wise"}>
+                        Factory Unit Wise
+                      </MenuItem>
+                      <MenuItem value={"Supplier Wise"}>Supplier Wise</MenuItem>
                     </Select>
                   </FormControl>
                   <Typography
@@ -172,7 +162,7 @@ const OrderManagement = () => {
                       fontSize: ".9rem !important",
                     }}
                   >
-                    NUMBER OF ORDERS BY - {" "}
+                    NUMBER OF ORDERS BY -{" "}
                     <Typography
                       component={"span"}
                       sx={(theme) => ({
@@ -184,7 +174,7 @@ const OrderManagement = () => {
                     </Typography>
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={6}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -195,10 +185,10 @@ const OrderManagement = () => {
                       fontSize: ".8rem",
                     }}
                   >
-                    STAGE WISE
+                    {val === '' ? "PRODUCT CATEGORY" : val.toUpperCase()}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                {/* <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -211,7 +201,7 @@ const OrderManagement = () => {
                   >
                     CYCLE TIME
                   </Typography>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Paper>
           </Grid>

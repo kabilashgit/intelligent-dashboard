@@ -11,10 +11,11 @@ import { randomGen } from "../HelperUtils";
 
 export const SimplePieChart = ({ colors, linkTo }) => {
   const dataSet = [
-    { name: "Group A", value: randomGen(100, 200) },
-    { name: "Group B", value: randomGen(100, 200) },
-    { name: "Group C", value: randomGen(100, 200) },
-    { name: "Group D", value: randomGen(100, 200) },
+    { name: "3 seater auto", value: randomGen(100, 200) },
+    { name: "5 seater car", value: randomGen(100, 200) },
+    { name: "7 seater car", value: randomGen(100, 200) },
+    { name: "1 ton lorry", value: randomGen(100, 200) },
+    { name: "3 ton lorry", value: randomGen(100, 200) },
   ];
   const _COLORS_ = [
     "#ea5545",

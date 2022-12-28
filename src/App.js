@@ -6,6 +6,7 @@ import InventoryManagement from "./Pages/InventoryManagement";
 import OrderManagement from "./Pages/OrderManagement";
 import SkuManagenent from "./Pages/SkuManagenent";
 import AssetManagement from "./Pages/AssetManagement";
+import PageNotFound from "./Pages/PageNotFound";
 // import { drawerWidth } from ".";
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -32,6 +33,7 @@ function App() {
             <Route path="/intelligent-order-management" element={<OrderManagement />} />
             <Route path="/intelligent-sku-management" element={<SkuManagenent />} />
             <Route path="intelligent-asset-management" element={<AssetManagement />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </Box>
       </Box>

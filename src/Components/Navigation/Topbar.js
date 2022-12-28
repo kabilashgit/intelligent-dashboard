@@ -1,6 +1,6 @@
 import * as React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+// import SearchIcon from "@mui/icons-material/Search";
 import MuiAppBar from "@mui/material/AppBar";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
@@ -9,8 +9,8 @@ import Typography from "@mui/material/Typography";
 
 import {
   Box,
-  InputBase,
-  Paper,
+  // InputBase,
+  // Paper,
   Stack,
   Tooltip,
 } from "@mui/material";
@@ -76,7 +76,7 @@ const Topbar = ({ toggleDrawer, menuState }) => {
               alignItems: "center",
             }}
           >
-            <Paper
+            {/* <Paper
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -97,8 +97,10 @@ const Topbar = ({ toggleDrawer, menuState }) => {
               <IconButton>
                 <SearchIcon />
               </IconButton>
-            </Paper>
-            <Typography variant="h6" noWrap component="div">
+            </Paper> */}
+            <Typography variant="h6" noWrap component="div" sx={{
+              fontSize: '1.5rem !important'
+            }}>
             INTELLIGENT INVENTORY MANAGEMENT
             </Typography>
             <Stack direction="row" alignItems="center">

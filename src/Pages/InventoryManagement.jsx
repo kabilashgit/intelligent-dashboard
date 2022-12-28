@@ -18,6 +18,7 @@ import CustomTable from "../Components/CustomTable";
 import Typography from "@mui/material/Typography";
 import { SimplePieChart } from "../Components/SimplePieChart";
 import { randomGen } from "../HelperUtils";
+import { dropDownData, tableData } from "./inventoryMgmtData";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -27,40 +28,12 @@ import { randomGen } from "../HelperUtils";
 // }));
 
 const InventoryManagement = () => {
-  const [age, setAge] = React.useState("");
+  const [val, setVal] = React.useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setVal(event.target.value);
   };
-  const dropDownData = [
-    {
-      title: "Dimensions",
-    },
-    {
-      title: "Location",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Factory Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Material Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Cost",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Department",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Type of Inventory",
-      dropdown: ["All", "one", "two"],
-    },
-  ];
+
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -74,12 +47,20 @@ const InventoryManagement = () => {
               color="success"
               title="INVENTORY"
               stats="$6.1M"
+              // subText=""
               trendNumber="4.1%"
               trend="positive"
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <StatisticsCard title={"SUPPLIER PERFORMANCE"} barData={[81, 22, 5]} />
+            <StatisticsCard
+              title={"SUPPLIER PERFORMANCE"}
+              barData={[81, 22, 5]}
+              notification={[
+                "<strong>Risk: </strong>5 % of the Suppliers do not deliver on time.",
+                "<strong>Mitigation: </strong>Identify reasons for delay, or seek alternative suppliers ",
+              ]}
+            />
           </Grid>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
@@ -112,7 +93,7 @@ const InventoryManagement = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <CustomTable />
+            <CustomTable tableData={tableData} />
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
@@ -139,7 +120,7 @@ const InventoryManagement = () => {
                       fontSize: "1rem !important",
                       textAlign: "left",
                       color: "primary.main",
-                      ml:1
+                      ml: 1,
                     }}
                   >
                     INVENTORY AT RISK
@@ -154,12 +135,17 @@ const InventoryManagement = () => {
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
-                      value={age}
+                      value={val}
                       label="Inventery Type"
                       onChange={handleChange}
+                      selected={"By product"}
                     >
-                      <MenuItem value={10}>Product Wise</MenuItem>
-                      <MenuItem value={20}>Inventory Wise</MenuItem>
+                      <MenuItem value={"By product"}>By product</MenuItem>
+                      <MenuItem value={"By inventory type"}>
+                        By inventory type
+                      </MenuItem>
+                      <MenuItem value={"By location"}>By location</MenuItem>
+                      <MenuItem value={"By supplier"}>By supplier</MenuItem>
                     </Select>
                   </FormControl>
                   <Typography
@@ -170,7 +156,7 @@ const InventoryManagement = () => {
                       fontSize: ".9rem !important",
                     }}
                   >
-                    NUMBER OF INVENTORY - {" "}
+                    NUMBER OF INVENTORY -{" "}
                     <Typography
                       component={"span"}
                       sx={(theme) => ({
@@ -182,7 +168,7 @@ const InventoryManagement = () => {
                     </Typography>
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={6}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -193,10 +179,10 @@ const InventoryManagement = () => {
                       fontSize: ".8rem",
                     }}
                   >
-                    PRODUCT WISE
+                    {val === "" ? "PRODUCT CATEGORY" : val.toUpperCase()}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                {/* <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -209,7 +195,7 @@ const InventoryManagement = () => {
                   >
                     INVENTORY TYPE WISE
                   </Typography>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Paper>
           </Grid>

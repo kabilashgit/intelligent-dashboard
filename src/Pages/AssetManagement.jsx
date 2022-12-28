@@ -17,6 +17,7 @@ import CustomTable from "../Components/CustomTable";
 import Typography from "@mui/material/Typography";
 import { SimplePieChart } from "../Components/SimplePieChart";
 import { randomGen } from "../HelperUtils";
+import { dropDownData, tableData } from "./assetMgmtData";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -26,41 +27,11 @@ import { randomGen } from "../HelperUtils";
 // }));
 
 const AssetManagement = () => {
-  const [age, setAge] = React.useState("");
+  const [val, setVal] = React.useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setVal(event.target.value);
   };
-
-  const dropDownData = [
-    {
-      title: "Dimensions",
-    },
-    {
-      title: "Location",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Factory Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Asset No.",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Health",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Asset Type",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Criticality",
-      dropdown: ["All", "one", "two"],
-    },
-  ];
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -79,7 +50,7 @@ const AssetManagement = () => {
             />
           </Grid>
           <Grid item xs={12} md={3}>
-          <CardStatsVertical
+            <CardStatsVertical
               color="success"
               title="HEALTH (%) AVERAGE"
               stats="0.72%"
@@ -118,7 +89,7 @@ const AssetManagement = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <CustomTable />
+            <CustomTable tableData={tableData} />
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
@@ -145,7 +116,7 @@ const AssetManagement = () => {
                       fontSize: "1rem !important",
                       textAlign: "left",
                       color: "primary.main",
-                      ml:1
+                      ml: 1,
                     }}
                   >
                     ASSET AT RISK
@@ -154,18 +125,17 @@ const AssetManagement = () => {
                     sx={{ m: 1, width: "100%", maxWidth: 300, mt: 3 }}
                     size="small"
                   >
-                    <InputLabel id="demo-select-small">
-                      Assets by
-                    </InputLabel>
+                    <InputLabel id="demo-select-small">Assets by</InputLabel>
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
-                      value={age}
+                      value={val}
                       label="Inventery Type"
                       onChange={handleChange}
+                      selected={"HEALTH"}
                     >
-                      <MenuItem value={10}>HEALTH</MenuItem>
-                      <MenuItem value={20}>CRITICALITY</MenuItem>
+                      <MenuItem value={"HEALTH"}>HEALTH</MenuItem>
+                      <MenuItem value={"CRITICALITY"}>CRITICALITY</MenuItem>
                     </Select>
                   </FormControl>
                   <Typography
@@ -176,7 +146,7 @@ const AssetManagement = () => {
                       fontSize: ".9rem !important",
                     }}
                   >
-                    NUMBER OF ASSETS BY - {" "}
+                    NUMBER OF ASSETS BY -{" "}
                     <Typography
                       component={"span"}
                       sx={(theme) => ({
@@ -188,7 +158,7 @@ const AssetManagement = () => {
                     </Typography>
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={6}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -199,10 +169,10 @@ const AssetManagement = () => {
                       fontSize: ".8rem",
                     }}
                   >
-                    STAGE WISE
+                    {val === "" ? "HEALTH" : val.toUpperCase()}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                {/* <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -215,7 +185,7 @@ const AssetManagement = () => {
                   >
                     CYCLE TIME
                   </Typography>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Paper>
           </Grid>

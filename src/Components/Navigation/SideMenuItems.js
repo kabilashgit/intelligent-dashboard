@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { Tooltip } from "@mui/material";
 // import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
+import "./navigation.scss";
 
 // const useStyle = makeStyles(
 //   (theme) => (
@@ -62,6 +63,7 @@ const SideMenuItems = ({ menuState, menuItems }) => {
                 sx={{
                   fontWeight: "500 !important",
                   opacity: menuState ? 1 : 0,
+                  whiteSpace: 'break-spaces'
                 }}
               >
                 {text.name}

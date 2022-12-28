@@ -18,42 +18,14 @@ import Typography from "@mui/material/Typography";
 import { SimplePieChart } from "../Components/SimplePieChart";
 import { randomGen } from "../HelperUtils";
 import SimpleMixedBarChart from "../Components/Charts/SimpleMixedBarChart";
+import { dropDownData, tableData } from "./skuMgmtData";
 
 const SkuManagenent = () => {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-  const dropDownData = [
-    {
-      title: "Dimensions",
-    },
-    {
-      title: "Location",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Factory Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Material Id",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Cost",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Department",
-      dropdown: ["All", "one", "two"],
-    },
-    {
-      title: "Type of Inventory",
-      dropdown: ["All", "one", "two"],
-    },
-  ];
+    const [val, setVal] = React.useState("");
+  
+    const handleChange = (event) => {
+      setVal(event.target.value);
+    };
   return (
     <>
       <Box sx={{ width: "100%" }}>
@@ -65,20 +37,26 @@ const SkuManagenent = () => {
           <Grid item xs={12} md={3}>
             <CardStatsVertical
               color="success"
-              title="COST OF SKU's"
+              title="Total SKU's"
               stats="$4000K"
               trendNumber="4.1%"
               trend="positive"
             />
           </Grid>
           <Grid item xs={12} md={3}>
-            <StatisticsCard title={"Wasteful SKU’s"} barData={[60, 30, 10]} />
+            <StatisticsCard
+              title={"SKU's SCRAPPED (%)"}
+              barData={[60, 30, 10]}
+              notification={[
+                "<strong>3 Seater Auto is unprofitable: </strong><br>Less margin due to cost of imported Glass used. Contact local vendor for similar quality Glass tops.",
+              ]}
+            />
           </Grid>
           <Grid item xs={12} md={3}>
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="primary"
-              title="Unprofitable SKU's"
+              title="UNPROFITABLE SKU's"
               stats="250"
               // trendNumber="10%"
               // trend="positive"
@@ -88,8 +66,11 @@ const SkuManagenent = () => {
             <CardStatsVertical
               icon={<CurrencyUsd />}
               color="warning"
-              title="OVER FORECASTED THAN 10% ABOVE"
-              stats="400"
+              title="OVERFORCASTED SKU's"
+              stats="243"
+              notification={[
+                "<strong>Sheet Higly Scrapped: </strong><br>The entire sheet is used every single time , the cut parts are not utilised, optimse the design.",
+              ]}
               // trendNumber="10%"
               // trend="positive"
             />
@@ -105,7 +86,7 @@ const SkuManagenent = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <CustomTable />
+            <CustomTable tableData={tableData} />
           </Grid>
         </Grid>
         <Divider sx={{ mb: 1 }} />
@@ -147,12 +128,15 @@ const SkuManagenent = () => {
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
-                      value={age}
+                      value={val}
                       label="Inventery Type"
                       onChange={handleChange}
+                      selected={"Product category"}
                     >
-                      <MenuItem value={10}>Product Wise</MenuItem>
-                      <MenuItem value={20}>Inventory Wise</MenuItem>
+                      <MenuItem value={'Product category'}>Product category</MenuItem>
+                      <MenuItem value={'Inventory category'}>Inventory category</MenuItem>
+                      <MenuItem value={'Wasteful'}>Wasteful</MenuItem>
+                      <MenuItem value={'SKU Performance'}>SKU Performance</MenuItem>
                     </Select>
                   </FormControl>
                   <Typography
@@ -175,7 +159,7 @@ const SkuManagenent = () => {
                     </Typography>
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                <Grid item xs={12} md={6}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -186,10 +170,10 @@ const SkuManagenent = () => {
                       fontSize: ".8rem",
                     }}
                   >
-                    PRODUCT WISE
+                    {val === '' ? "PRODUCT CATEGORY" : val.toUpperCase()}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={3}>
+                {/* <Grid item xs={12} md={3}>
                   <SimplePieChart />
                   <Typography
                     component={"div"}
@@ -202,7 +186,7 @@ const SkuManagenent = () => {
                   >
                     INVENTORY TYPE WISE
                   </Typography>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Paper>
           </Grid>
