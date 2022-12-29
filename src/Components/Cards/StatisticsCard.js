@@ -8,11 +8,9 @@ import CardContent from "@mui/material/CardContent";
 // ** Icons Imports
 import {
   Avatar,
-  Badge,
   IconButton,
   Menu,
   MenuItem,
-  styled,
 } from "@mui/material";
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 // import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
@@ -29,15 +27,6 @@ const StatisticsCard = ({ title, barData, notification }) => {
     setAnchorEl(null);
   };
 
-  const StyledBadge = styled(Badge)(({ theme }) => ({
-    "& .MuiBadge-badge": {
-      right: 3,
-      top: 16,
-      border: `1px solid ${theme.palette.background.paper}`,
-      background: `${theme.palette.error.light}`,
-      // padding: "0 4px",
-    },
-  }));
 
   const salesData = [
     {
@@ -143,17 +132,7 @@ const StatisticsCard = ({ title, barData, notification }) => {
                   onClick={handleClick}
                   sx={{ m: 0, p: 0 }}
                 >
-                  <StyledBadge
-                    // badgeContent={Math.floor(Math.random() * (10 - 1 + 1)) + 1}
-                    variant="dot"
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    color="error"
-                  >
-                    <ReportProblemIcon fontSize={"20px"} />
-                  </StyledBadge>
+                    <ReportProblemIcon sx={{fontSize: '1.2rem', color: '#ea5545'}} />
                 </IconButton>
                 <Menu
                   id="long-menu"
