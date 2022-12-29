@@ -130,13 +130,13 @@ const InventoryManagement = () => {
                     size="small"
                   >
                     <InputLabel id="demo-select-small">
-                      Inventery Type
+                      Inventory Type
                     </InputLabel>
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
                       value={val}
-                      label="Inventery Type"
+                      label="Inventory Type"
                       onChange={handleChange}
                       selected={"By product"}
                     >

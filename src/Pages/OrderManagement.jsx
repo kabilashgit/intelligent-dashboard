@@ -46,9 +46,9 @@ const OrderManagement = () => {
               color="success"
               title="TOTAL MOs"
               stats="3764"
-              subText=" (increase by 4%)"
-              // trendNumber="4.1%"
-              // trend="positive"
+              // subText=" (increase by 4%)"
+              trendNumber="4%"
+              trend="positive"
             />
           </Grid>
           <Grid item xs={12} md={3}>
@@ -138,7 +138,7 @@ const OrderManagement = () => {
                       labelId="demo-select-small"
                       id="demo-select-small"
                       value={val}
-                      label="Inventery Type"
+                      label="Inventory Type"
                       onChange={handleChange}
                       selected={"Product category"}
                     >

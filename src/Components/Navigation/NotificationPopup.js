@@ -13,7 +13,8 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { Notifications } from "@mui/icons-material";
+// import { Notifications } from "@mui/icons-material";
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -99,7 +100,7 @@ const NotificationPopup = () => {
           aria-expanded={open ? "true" : undefined}
         >
           <StyledBadge badgeContent={"d"} variant="dot" color="secondary">
-            <Notifications color="action" sx={{ color: "white" }} />
+            <ReportProblemIcon color="action" sx={{ color: "white" }} />
           </StyledBadge>
         </IconButton>
       </Tooltip>

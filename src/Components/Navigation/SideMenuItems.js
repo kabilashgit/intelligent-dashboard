@@ -8,6 +8,7 @@ import { Tooltip } from "@mui/material";
 // import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
 import "./navigation.scss";
+// import { Inventory } from "@mui/icons-material";
 
 // const useStyle = makeStyles(
 //   (theme) => (
@@ -61,12 +62,16 @@ const SideMenuItems = ({ menuState, menuItems }) => {
                 component={"span"}
                 color={"secondary"}
                 sx={{
+                  width: "100%",
                   fontWeight: "500 !important",
                   opacity: menuState ? 1 : 0,
-                  whiteSpace: 'break-spaces'
+                  whiteSpace: "break-spaces",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                {text.name}
+                {text.name} {text.icon2 && text.icon2}
               </Typography>
             </ListItemButton>
           </Tooltip>

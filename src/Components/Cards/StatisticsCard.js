@@ -14,7 +14,8 @@ import {
   MenuItem,
   styled,
 } from "@mui/material";
-import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+// import NotificationImportantIcon from "@mui/icons-material/NotificationImportant";
 
 const ITEM_HEIGHT = 48;
 
@@ -151,7 +152,7 @@ const StatisticsCard = ({ title, barData, notification }) => {
                     }}
                     color="error"
                   >
-                    <NotificationImportantIcon fontSize={"20px"} />
+                    <ReportProblemIcon fontSize={"20px"} />
                   </StyledBadge>
                 </IconButton>
                 <Menu

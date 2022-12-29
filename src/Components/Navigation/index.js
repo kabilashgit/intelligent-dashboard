@@ -9,6 +9,8 @@ import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import Person3Icon from '@mui/icons-material/Person3';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import HandymanIcon from '@mui/icons-material/Handyman';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+
 
 const Navigation = () => {
   const [open, setOpen] = React.useState(window.innerWidth > 750 ? true : false);
@@ -21,7 +23,8 @@ const Navigation = () => {
     {
       name: "Inventory Management",
       link: "/",
-      icon: <InventoryIcon />
+      icon: <InventoryIcon />,
+      icon2: <ReportProblemIcon sx={{fontSize: '1rem', color: '#ea5545'}} />
     },
     {
       name: "Order Management",
@@ -31,7 +34,8 @@ const Navigation = () => {
     {
       name: "SKU's Management",
       link: "intelligent-sku-management",
-      icon: <LoyaltyIcon />
+      icon: <LoyaltyIcon />,
+      icon2: <ReportProblemIcon sx={{fontSize: '1rem', color: '#ea5545'}} />
     },
     {
       name: "Asset Management",

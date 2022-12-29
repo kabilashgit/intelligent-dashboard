@@ -6,7 +6,7 @@ import App from "./App";
 import theme from "./theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-export const drawerWidth = 240;
+export const drawerWidth = 260;
 
 root.render(
   <React.StrictMode>

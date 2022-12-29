@@ -130,7 +130,7 @@ const AssetManagement = () => {
                       labelId="demo-select-small"
                       id="demo-select-small"
                       value={val}
-                      label="Inventery Type"
+                      label="Inventory Type"
                       onChange={handleChange}
                       selected={"HEALTH"}
                     >
