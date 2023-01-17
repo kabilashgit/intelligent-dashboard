@@ -6,7 +6,8 @@ import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 // import BrandLogo from "../../assets/images/JCB-Logo.jpg";
-import BrandLogo from "../../assets/images/logo-placeholder.png";
+// import BrandLogo from "../../assets/images/logo-placeholder.png";
+import BrandLogo from "../../assets/images/logo.png";
 // import BritishDesktopLogo from "../../assets/images/ba_masterbrand_positive.svg";
 
 import { drawerWidth } from "../../index";
